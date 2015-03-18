@@ -13,15 +13,16 @@ public class GunReplica extends Product {
 	 * @param salesPrice what the product retails for.
 	 * @param rentPrice price of renting.
 	 * @param originCountry Country where made.
+	 * @param stock the amount stock
 	 * @param minStock the minimumstock of the product
 	 * @param fabric maker of the gun
 	 * @param calibre the guns caliber
 	 */
-	public GunReplica(int id, int minStock, String name, String originCountry,
+	public GunReplica(int id, int stock, int minStock, String name, String originCountry,
 			double purchasePrice, double rentPrice, double salesPrice,
 			Supplier supplier, String fabric, String calibre) 
 	{
-		super(id, minStock, name, originCountry, purchasePrice, rentPrice,
+		super(id, stock, minStock, name, originCountry, purchasePrice, rentPrice,
 				salesPrice, supplier);
 		this.fabric = fabric;
 		this.calibre = calibre;

@@ -19,14 +19,15 @@ public class Clothing extends Product {
 	 * @param rentPrice price of renting.
 	 * @param originCountry Country where made.
 	 * @param minStock the minimumstock of the product
+	 * @param stock the amount stock
 	 * @param size the clothes size, small, large.. 
 	 * @param colour the colour of the clothes
 	 */
-	public Clothing(int id, int minStock, String name, String originCountry,
+	public Clothing(int id, int stock, int minStock, String name, String originCountry,
 			double purchasePrice, double rentPrice, double salesPrice,
 			Supplier supplier, String size, String colour) 
 	{
-		super(id, minStock, name, originCountry, purchasePrice, rentPrice,
+		super(id, stock, minStock, name, originCountry, purchasePrice, rentPrice,
 				salesPrice, supplier);
 		this.size = size;
 		this.colour = colour;

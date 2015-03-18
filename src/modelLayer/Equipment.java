@@ -27,14 +27,15 @@ public class Equipment extends Product {
 	 * @param rentPrice price of renting.
 	 * @param originCountry Country where made.
 	 * @param minStock the minimumstock of the product.
+	 * @param stock the amount stock
 	 * @param type the type of equipment.
 	 * @param desc a description of the equipment.
 	 */
-	public Equipment(int id, int minStock, String name, String originCountry,
+	public Equipment(int id, int stock, int minStock, String name, String originCountry,
 			double purchasePrice, double rentPrice, double salesPrice,
 			Supplier supplier, String type, String desc) 
 	{
-		super(id, minStock, name, originCountry, purchasePrice, rentPrice,
+		super(id, stock, minStock, name, originCountry, purchasePrice, rentPrice,
 				salesPrice, supplier);
 		this.type = type;
 		this.desc = desc;

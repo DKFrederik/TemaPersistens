@@ -10,6 +10,7 @@ public class Product {
 	
 	private int id;
 	private int minStock;
+	private int stock;
 	private String name;
 	private String originCountry;
 	private double purchasePrice;
@@ -27,11 +28,12 @@ public class Product {
 	 * @param originCountry Country where made.
 	 * @param minStock the minimumstock of the product
 	 */
-	public Product(int id, int minStock, String name, String originCountry,
+	public Product(int id, int stock, int minStock, String name, String originCountry,
 			double purchasePrice, double rentPrice, double salesPrice,
 			Supplier supplier) 
 	{
 		this.id = id;
+		this.stock = stock;
 		this.minStock = minStock;
 		this.name = name;
 		this.originCountry = originCountry;
