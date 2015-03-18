@@ -123,4 +123,18 @@ public class Product {
 		this.supplier = supplier;
 	}
 
+	/**
+	 * @return the stock
+	 */
+	public int getStock() {
+		return stock;
+	}
+
+	/**
+	 * @param stock the stock to set
+	 */
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
 }
