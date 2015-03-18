@@ -11,13 +11,6 @@ public class Equipment extends Product {
 	private String desc;
 
 	/**
-	 * 
-	 */
-	public Equipment() {
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
 
 	 * @param id product id.
 	 * @param name product name.
