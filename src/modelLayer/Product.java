@@ -6,17 +6,23 @@ package modelLayer;
   * @version 0.1
   *
   */
+
 public class Product {
 	
 	private int id;
 	private int minStock;
 	private int stock;
 	private String name;
-	private String originCountry;
+	private String countryOfOrigin;
 	private double purchasePrice;
 	private double rentPrice;
 	private double salesPrice;
 	private Supplier supplier;
+	
+	public Product() {
+		
+	}
+	
 	
 	/**
 	 * @param id product id.
@@ -28,6 +34,7 @@ public class Product {
 	 * @param originCountry Country where made.
 	 * @param minStock the minimumstock of the product
 	 */
+	
 	public Product(int id, int stock, int minStock, String name, String originCountry,
 			double purchasePrice, double rentPrice, double salesPrice,
 			Supplier supplier) 
@@ -36,7 +43,7 @@ public class Product {
 		this.stock = stock;
 		this.minStock = minStock;
 		this.name = name;
-		this.originCountry = originCountry;
+		this.countryOfOrigin = originCountry;
 		this.purchasePrice = purchasePrice;
 		this.rentPrice = rentPrice;
 		this.salesPrice = salesPrice;
@@ -73,14 +80,14 @@ public class Product {
 		this.name = name;
 	}
 	
-	public String getOriginCountry() 
+	public String getCountryOfOrigin() 
 	{
-		return originCountry;
+		return countryOfOrigin;
 	}
 	
-	public void setOriginCountry(String originCountry) 
+	public void setCountryOfOrigin(String countryOfOrigin) 
 	{
-		this.originCountry = originCountry;
+		this.countryOfOrigin = countryOfOrigin;
 	}
 	
 	public double getPurchasePrice() 

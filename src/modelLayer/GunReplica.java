@@ -27,6 +27,11 @@ public class GunReplica extends Product {
 		this.fabric = fabric;
 		this.calibre = calibre;
 	}
+	
+	public GunReplica()
+	{
+		super();
+	}
 
 	public String getFabric() 
 	{

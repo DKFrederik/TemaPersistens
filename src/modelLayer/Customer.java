@@ -10,6 +10,11 @@ public class Customer {
 	private String email;
 	private char type;
 	
+	public Customer()
+	{
+		
+	}
+	
 	public Customer(int id, String fname, String lname, String address,
 			String zipcode, String phoneNo, String email, char type) 
 	{
@@ -98,9 +103,9 @@ public class Customer {
 		return type;
 	}
 	
-	public void setType(char type) 
+	public void setType(String type) 
 	{
-		this.type = type;
+		this.type = type.charAt(0);
 	}
 	
 	
