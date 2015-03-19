@@ -4,7 +4,7 @@ import DBLayer.CustomerDB;
 
 public class CustomerCtr {
 	
-	private Customer pik;
+	private Customer customer;
 	private CustomerDB custDB;
 	public CustomerCtr(Customer customer, CustomerDB custDB) {
 		super();
