@@ -1,18 +1,18 @@
-package CtrLayer;
+package ctrLayer;
 import modelLayer.SalesOrder;
 
 public class OrderCtr {
 	
-	private ProductCtr proCtr;
 	private CustomerCtr custCtr;
-	private SalesOrder salesOrders;
+	private ProductCtr proCtr;
+	private SalesOrder sale;
 
-	public OrderCtr(ProductCtr proCtr, CustomerCtr custCtr,
-			SalesOrder salesOrders) {
+	public OrderCtr() {
 		super();
-		this.proCtr = proCtr;
-		this.custCtr = custCtr;
-		this.salesOrders = salesOrders;
+		this.proCtr = new ProductCtr();
+		this.custCtr = new CustomerCtr();
+		this.sale = new SalesOrder();
 	}
+	
 
 }

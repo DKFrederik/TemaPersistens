@@ -33,6 +33,10 @@ public class Equipment extends Product {
 		this.type = type;
 		this.desc = desc;
 	}
+	
+	public Equipment() {
+		
+	}
 
 	public String getType() 
 	{

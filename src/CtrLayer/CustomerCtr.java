@@ -1,39 +1,52 @@
-package CtrLayer;
-import modelLayer.Customer;
-import DBLayer.CustomerDB;
+package ctrLayer;
+import modelLayer.*;
+import DBLayer.*;
+
+/**
+ * @Author 	Frederik, Nichlas, Claus og Peter
+ * @date	20-03-2015
+ * CustomerCtr has the purpose of communicating with the DBCustomer
+ */
 
 public class CustomerCtr {
 	
-	private Customer customer;
-	private CustomerDB custDB;
-	public CustomerCtr(Customer customer, CustomerDB custDB) {
-		super();
-		this.customer = customer;
-		this.custDB = custDB;
+	private DBCustomer custDB;
+	
+	public CustomerCtr() {
+		this.custDB = new DBCustomer();
+	}
+	
+	/**
+	 * Prompts the CustomerDB to return an object using information from the database
+	 * @param phoneno 
+	 * @return a Customer object with matching phoneNo String
+	 */
+	public Customer getCustomer(String phoneno) {
+		return custDB.findCustomer(phoneno);
 	}
 	/**
-	 * @return the customer
+	 * Prompts the CustomerDB to update the database
+	 * @param A customer object
+	 * @return an int indicating whether the update was succesfull (1) or unsuccesful (0) 
 	 */
-	public Customer getCustomer() {
-		return customer;
+	public int updateCustomer(Customer customer) {
+		return custDB.updateCustomer(customer);
 	}
 	/**
-	 * @param customer the customer to set
+	 * Prompts the CustomerDB to delete a tubble in Customer matching the param phoneno
+	 * @param the phoneno attribute of the customer
+	 * @return an int indicating whether the delete was succesfull (1) or unsuccesful (0)
 	 */
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public int deleteCustomer(String phoneno) {
+		return custDB.deleteCustomer(phoneno);
 	}
 	/**
-	 * @return the custDB
+	 * Prompts the CustomerDB to insert a Customer objet to the database
+	 * @param A customer object
+	 * @return an int indicating whether the insert was succesfull (1) or unsuccesful (0) 
 	 */
-	public CustomerDB getCustDB() {
-		return custDB;
-	}
-	/**
-	 * @param custDB the custDB to set
-	 */
-	public void setCustDB(CustomerDB custDB) {
-		this.custDB = custDB;
+	public int insertCustomer(Customer customer) {
+		return custDB.insertCustomer(customer);
 	}
 	
 	

@@ -24,8 +24,8 @@ public class DBCustomerTest {
 	
 	
 	@Test
-	public void testSearchCustomerPhoneNo() {
-		Customer customer = cus.findCustomer("22164410", false);
+	public void testSearchCustomer() {
+		Customer customer = cus.findCustomer("22164410");
 		if(customer !=null){
 			System.out.println(customer.getFname());
 			assertEquals("Claus",customer.getFname());
@@ -35,5 +35,29 @@ public class DBCustomerTest {
 			fail("Customer not found!");
 		}
 	}
+	
+	@Test
+	public void testUpdateCustomer() {
+		modelLayer.Customer customer = new Customer("Peter", "Rathmann", "Prinsensgade 41", "9000", "11223344", "blabla@ucn.dk", 'p');
+		assertEquals(0, cus.updateCustomer(customer));
+		customer = new Customer("testName", "testLastName", "testAddress", "testZip", "00000000", "testEmail", 'p');
+		assertEquals(1, cus.deleteCustomer("customer"));
+	}
+	
+	@Test
+	public void testDeleteCustomer() {
+		assertEquals(1, cus.deleteCustomer("22164410"));
+		assertEquals(-1, cus.deleteCustomer("testPhone"));
+	}
+	
+	@Test
+	public void testInsertCustomer() {
+		modelLayer.Customer customer = new Customer("Peter", "Rothmann", "Prinsensgade 41", "9000", "11223344", "blabla@ucn.dk", 'p');
+		assertEquals(0, cus.insertCustomer(customer));
+		customer = new Customer("Peter", "Rathmann", "Prinsensgade 41", "9000", "10101010", "blabla@ucn.dk", 'p');
+		assertEquals(0, cus.insertCustomer(customer));
+	}
+	
+
 
 }

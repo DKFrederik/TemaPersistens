@@ -33,6 +33,9 @@ public class Clothing extends Product {
 		this.colour = colour;
 	}
 	
+	public Clothing() {
+		
+	}
 	public String getSize() 
 	{
 		return size;
