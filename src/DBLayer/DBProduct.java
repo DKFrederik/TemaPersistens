@@ -31,28 +31,14 @@ public class DBProduct {
 		String wClause = "  name = '" + name + "'";
 		return singleWhere(wClause, retriveAssociation);
 	}
-
-	// find one product having the fname
-	public Product searchProductFname(String attValue,
-			boolean retriveAssociation) {
-		String wClause = "fname like '%" + attValue + "%'";
-		System.out.println("SearchProduct " + wClause);
-		return singleWhere(wClause, retriveAssociation);
-	}
-
-	// find one product having the lname
-	public Product searchProductLname(String attValue,
-			boolean retriveAssociation) {
-		String wClause = "lname = '" + attValue + "'";
-		System.out.println("SearchProduct " + wClause);
-		return singleWhere(wClause, retriveAssociation);
-	}
-
-	// insert a new product
-
-	public int insertProduct(Product pro) throws Exception { // call to get the
-																// next phoneno
-																// number
+	
+	/**
+	 * 
+	 * @param pro The product that is to be inserted
+	 * @return 
+	 * @throws Exception 
+	 */
+	public int insertProduct(Product pro) throws Exception {
 
 		int rc = -1;
 		String query = "INSERT INTO Product(supplier, name, puchasePrice, salesPrice, rentPrice, countryOfOrigin, minStock, stock, size, colour, type, description, fabric, calibre)  VALUES('"
@@ -100,59 +86,39 @@ public class DBProduct {
 		return (rc);
 	}
 
-	public int updateProduct(Product cus) {
-		Product proObj = cus;
-		int rc = -1;
-
-		String query = "UPDATE customer SET " + "fname ='" + proObj.getFname()
-				+ "', " + "lname ='" + proObj.getLname() + "', " + "address ='"
-				+ proObj.getAddress() + "', " + "zipcode ='"
-				+ proObj.getZipcode() + "' " + "phoneno ='"
-				+ proObj.getPhoneNo() + "' " + "email ='" + proObj.getEmail()
-				+ "' " + "type ='" + proObj.getType() + "' "
-				+ " WHERE phoneNo = '" + proObj.getPhoneNo() + "'";
-		System.out.println("Update query:" + query);
-		try { // update customer
-			Statement stmt = con.createStatement();
-			stmt.setQueryTimeout(5);
-			rc = stmt.executeUpdate(query);
-
-			stmt.close();
-		}// slut try
-		catch (Exception ex) {
-			System.out.println("Update exception in customer db: " + ex);
-		}
-		return (rc);
+	public void updateProduct(Product cus) {
 	}
 
-	public int delete(String phoneNo) {
+	public int delete(String proName) {
 		int rc = -1;
 
-		String query = "DELETE FROM customer WHERE phoneno = '" + phoneNo + "'";
+		String query = "DELETE FROM Product WHERE name = '" + proName + "'";
 		System.out.println(query);
-		try { // delete from customer
+		try {
 			Statement stmt = con.createStatement();
 			stmt.setQueryTimeout(5);
 			rc = stmt.executeUpdate(query);
 			stmt.close();
-		}// slut try
+		}
 		catch (Exception ex) {
-			System.out.println("Delete exception in customer db: " + ex);
+			System.out.println("Delete exception in product db: " + ex);
 		}
 		return (rc);
 	}
 
-	// private methods
-	// michWere is used whenever we want to select more than one product
-
-	private ArrayList<Product> miscWhere(String wClause,
-			boolean retrieveAssociation) {
+	/**
+	 * 
+	 * @param wClause where clause for the query.
+	 * @param retrieveAssociation whether or not to retrieve associations.
+	 * @return An ArrayList of products.
+	 */
+	private ArrayList<Product> miscWhere(String wClause, boolean retrieveAssociation) {
 		ResultSet results;
 		ArrayList<Product> list = new ArrayList<Product>();
 
 		String query = buildQuery(wClause);
 
-		try { // read the customer from the database
+		try {
 			Statement stmt = con.createStatement();
 			stmt.setQueryTimeout(5);
 			results = stmt.executeQuery(query);
@@ -163,18 +129,10 @@ public class DBProduct {
 				list.add(proObj);
 			}// end while
 			stmt.close();
+			
+			// Get suppliers around here
 
-			/*
-			 * if(retrieveAssociation) { //The supervisor and department is to
-			 * be build as well for(Product proObj : list){ String superphoneno
-			 * = proObj.getSupervisor().getSsn(); Product superEmp =
-			 * singleWhere(" phoneno = '" + superphoneno + "'",false);
-			 * proObj.setSupervisor(superEmp);
-			 * System.out.println("Supervisor is seleceted"); // here the
-			 * department has to be selected as well } }//end if
-			 */
-
-		}// slut try
+		}
 		catch (Exception e) {
 			System.out.println("Query exception - select: " + e);
 			e.printStackTrace();
@@ -182,14 +140,13 @@ public class DBProduct {
 		return list;
 	}
 
-	// Singelwhere is used when we only select one product
 	private Product singleWhere(String wClause, boolean retrieveAssociation) {
 		ResultSet results;
 		Product proObj = new Product();
 
 		String query = buildQuery(wClause);
 		System.out.println(query);
-		try { // read the product from the database
+		try { 
 			Statement stmt = con.createStatement();
 			stmt.setQueryTimeout(5);
 			results = stmt.executeQuery(query);
@@ -198,30 +155,25 @@ public class DBProduct {
 				proObj = buildProduct(results);
 				// assocaition is to be build
 				stmt.close();
-
-				/*
-				 * if(retrieveAssociation) { //The supervisor and department is
-				 * to be build as well String supplierName =
-				 * proObj.getSupplier().getName(); Product superEmp =
-				 * singleWhere(" phoneno = '" + superphoneno + "'",false);
-				 * proObj.setSupervisor(superEmp);
-				 * System.out.println("Supervisor is seleceted"); // here the
-				 * department has to be selected as well
-				 * 
-				 * }
-				 */
-
-			} else { // no product was found
+				
+				// get supplier should be implemented around here.
+				
+				
+			} else {
 				proObj = null;
 			}
-		}// end try
+		}
 		catch (Exception e) {
 			System.out.println("Query exception: " + e);
 		}
 		return proObj;
 	}
 
-	// method to build the query
+	/**
+	 * Builds a sql query
+	 * @param wClause where clause.
+	 * @return the build sql query.
+	 */
 	private String buildQuery(String wClause) {
 		String query = "SELECT name, purchasePrice, salesPrice, rentPrice, countryOfOrigin, minStock, stock, size, colour, type, description, fabric, calibre FROM Product";
 
@@ -231,11 +183,16 @@ public class DBProduct {
 		return query;
 	}
 
-	// method to build an product object
+	/**
+	 * Builds a product from a ResultSet.
+	 * 
+	 * @param results the results returned by the DMBS
+	 * @return a product
+	 */
 	private Product buildProduct(ResultSet results)
 	{
 	
-	try{ // the columns from the table customers are used
+	try{
 		if(results.getString("size") == null)
 		{
 			System.out.println("size = null");
@@ -262,7 +219,12 @@ public class DBProduct {
 		return null; //Should not happen
         
 	}
-
+	
+	/**
+	 * 
+	 * @param results the ResultSet returned by the DMBS.
+	 * @return a GunReplica object. 
+	 */
 	private GunReplica makeGunReplica(ResultSet results) {
 		
 		GunReplica gun = new GunReplica();
@@ -284,7 +246,11 @@ public class DBProduct {
 		
 		return gun;
 	}
-	
+	/**
+	 * 
+	 * @param results the ResultSet returned by the DMBS.
+	 * @return a Equipment object. 
+	 */
 	private Equipment makeEquipment(ResultSet results) {
 		
 		Equipment eq = new Equipment();
@@ -308,6 +274,11 @@ public class DBProduct {
 		return eq;
 	}
 	
+	/**
+	 * 
+	 * @param results the ResultSet returned by the DMBS.	 
+	 * @return a Clothing object. 
+	 */
 	private Clothing makeClothing(ResultSet results) {
 		
 		Clothing c = new Clothing(); 
@@ -330,10 +301,4 @@ public class DBProduct {
 		
 		return c;
 	}
-	
-	public Product searchProductPhoneNo(String phoneno, boolean b) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

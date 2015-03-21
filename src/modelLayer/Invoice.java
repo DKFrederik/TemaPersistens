@@ -10,14 +10,15 @@ public class Invoice {
 	private ArrayList<SalesOrder> salesOrders;
 	
 	public Invoice(int invoiceNo, Date paymentDate, int amount) {
-		super();
 		this.invoiceNo = invoiceNo;
 		this.paymentDate = paymentDate;
 		this.amount = amount;
-		
 		salesOrders = new ArrayList<SalesOrder>();
 	}
 
+	public Invoice() {
+		salesOrders = new ArrayList<SalesOrder>();
+	}
 	/**
 	 * @return the invoiceNo
 	 */

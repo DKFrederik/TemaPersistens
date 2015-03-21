@@ -16,16 +16,36 @@ public class SalesOrder {
 	private Date deliveryStatus;
 	private ArrayList<PartOrder> partOrders;
     private Customer customer;
+    private Invoice invoice;
 	
-	public SalesOrder(int id, Date date, char deliveryDate, Date deliveryStatus) {
-		super();
-		this.id = id;
+	public SalesOrder(Date date, char deliveryDate, Date deliveryStatus, Customer customer, Invoice invoice) {
 		this.date = date;
 		this.deliveryDate = deliveryDate;
 		this.deliveryStatus = deliveryStatus;
+		this.customer = customer;
+		this.invoice = invoice;
 		partOrders = new ArrayList<>();
 	}
+	
+	public SalesOrder() {
+	}
 
+	public double getPrice()
+	{
+		double prize = 0;
+		int size = partOrders.size();
+		for(int i = 0; i < size; i++)
+		{
+			prize += partOrders.get(i).getItemPrice() * partOrders.get(i).getNrOfItems();
+		}
+		return prize;
+	}
+	
+	public void addPartOrder(PartOrder partOrder)
+	{
+		partOrders.add(partOrder);
+	}
+	
 	/**
 	 * @return the id
 	 */
@@ -110,5 +130,15 @@ public class SalesOrder {
 		this.customer = customer;
 	}
 	
+	public Invoice getInvoice() {
+		return this.invoice;
+	}
+
+	/**
+	 * @param customer the customer to set
+	 */
+	public void setInvoice(Invoice invoice) {
+		this.invoice = invoice;
+	}
 	
 }

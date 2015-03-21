@@ -7,13 +7,10 @@ public class PartOrder {
 	private int nrOfItems;
 	private double itemPrice;
 	
-	public PartOrder(int orderId, Product products, int nrOfItems,
-			double itemPrice) {
-		super();
-		this.orderId = orderId;
-		this.products = products;
+	public PartOrder(Product product, int nrOfItems) {
+		this.products = product;
 		this.nrOfItems = nrOfItems;
-		this.itemPrice = itemPrice;
+		this.itemPrice = product.getSalesPrice();
 	}
 
 	/**
