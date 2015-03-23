@@ -96,8 +96,49 @@ public class DBProduct {
 		return (rc);
 	}
 
-	public int updateProduct(Product pro) {
-		return -1;
+	/**
+	 * 
+	 * @param cus The customer object that is to be updated in the database.
+	 * @return
+	 */
+	public int updateProduct(Product pro, String oldName) {
+		Product proObj = pro;
+		int rc = -1;
+
+		String query = "UPDATE Product SET " + "supplier ='" + proObj.getSupplier().getName() + "', " 
+				+ "name ='" + proObj.getName() + "', " 
+				+ "purchasePrice ='" + proObj.getPurchasePrice() + "', " 
+				+ "salesPrice ='" + proObj.getSalesPrice() + "', " 
+				+ "rentPrice ='" + proObj.getRentPrice() + "', " 
+				+ "countryOfOrigin ='" + proObj.getCountryOfOrigin() + "', " 
+				+ "minStock ='" + proObj.getMinStock() + "', "
+				+ "stock ='" + proObj.getStock() + "', ";
+		if(proObj instanceof Clothing) {
+			query += "size ='" + ((Clothing) proObj).getSize() + "', "
+					+ "colour ='" + ((Clothing) proObj).getColour() + "', ";
+		}
+		else if(proObj instanceof Equipment) {
+			query += "type ='" + ((Equipment) proObj).getType() + "', "
+					+ "description ='" + ((Equipment) proObj).getDesc() + "', ";
+		}
+		else if(proObj instanceof GunReplica) {
+			query += "fabric ='" + ((GunReplica) proObj).getFabric() + "', "
+					+ "calibre ='" + ((GunReplica) proObj).getCalibre() + "' ";
+		}
+		query += "WHERE name = '" + oldName + "'";
+		System.out.println("Update query:" + query);
+		
+		try {
+			Statement stmt = con.createStatement();
+			stmt.setQueryTimeout(5);
+			rc = stmt.executeUpdate(query);
+			stmt.close();
+		}
+		
+		catch (Exception ex) {
+			System.out.println("Update exception in product db: " + ex);
+		}
+		return (rc);
 	}
 
 	public int deleteProduct(String proName) {

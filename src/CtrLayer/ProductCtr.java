@@ -29,8 +29,8 @@ public class ProductCtr {
 	 * @param A Product object
 	 * @return 
 	 */
-	public int updateProduct(Product product) {
-		return dBPro.updateProduct(product);
+	public int updateProduct(Product product, String oldName) {
+		return dBPro.updateProduct(product, oldName);
 	}
 	/**
 	 * Prompts the ProductDB to delete a tubble in Customer matching the param phoneno
