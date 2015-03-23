@@ -16,6 +16,7 @@ public class DBSupplier {
 	}
 	
 	public Supplier findSupplier(String name) {
+		System.out.println("First");
 		String wClause = "  name = '" + name + "'";
 		return singleWhere(wClause);
 	}
@@ -23,7 +24,7 @@ public class DBSupplier {
 	private Supplier singleWhere(String wClause) {
 		ResultSet results;
 		Supplier supObj = new Supplier();
-
+		System.out.println("Before query");
 		String query = buildQuery(wClause);
 		System.out.println(query);
 		try { 
@@ -46,7 +47,7 @@ public class DBSupplier {
 	}
 
 	private String buildQuery(String wClause) {
-		String query = "SELECT name, address, country, phoneno, email FROM Product";
+		String query = "SELECT name, address, country, phoneno, email FROM Supplier";
 
 		if (wClause.length() > 0)
 			query = query + " WHERE " + wClause;
@@ -64,10 +65,12 @@ public class DBSupplier {
 			sup.setCountry(results.getString("country"));
 			sup.setPhoneno(results.getString("phoneno"));
 			sup.setEmail(results.getString("email"));
+			
 		}
 		catch (Exception e) {
 			System.out.println("Error in building supplier");
 		}
+		
 		return sup;
 	}
 }

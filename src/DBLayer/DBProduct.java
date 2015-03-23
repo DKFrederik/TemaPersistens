@@ -112,7 +112,7 @@ public class DBProduct {
 				+ "rentPrice ='" + proObj.getRentPrice() + "', " 
 				+ "countryOfOrigin ='" + proObj.getCountryOfOrigin() + "', " 
 				+ "minStock ='" + proObj.getMinStock() + "', "
-				+ "stock ='" + proObj.getStock() + "', ";
+				+ "stock ='" + proObj.getStock() + "' ";
 		if(proObj instanceof Clothing) {
 			query += "size ='" + ((Clothing) proObj).getSize() + "', "
 					+ "colour ='" + ((Clothing) proObj).getColour() + "', ";
@@ -225,7 +225,7 @@ public class DBProduct {
 	 * @return the build sql query.
 	 */
 	private String buildQuery(String wClause) {
-		String query = "SELECT name, purchasePrice, salesPrice, rentPrice, countryOfOrigin, minStock, stock, size, colour, type, description, fabric, calibre FROM Product";
+		String query = "SELECT supplier, name, purchasePrice, salesPrice, rentPrice, countryOfOrigin, minStock, stock, size, colour, type, description, fabric, calibre FROM Product";
 
 		if (wClause.length() > 0)
 			query = query + " WHERE " + wClause;

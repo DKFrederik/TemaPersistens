@@ -1,6 +1,7 @@
 package CtrLayer;
 import modelLayer.Product;
-import DBLayer.DBProduct;
+import modelLayer.Supplier;
+import DBLayer.*;
 
 /**
  * @Author 	Frederik, Nichlas, Claus og Peter
@@ -11,9 +12,11 @@ import DBLayer.DBProduct;
 public class ProductCtr {
 
 	private DBProduct dBPro;
+	private DBSupplier dBSup;
 	
 	public ProductCtr() {
 		this.dBPro = new DBProduct();
+		dBSup = new DBSupplier();
 	}
 	
 	/**
@@ -29,8 +32,8 @@ public class ProductCtr {
 	 * @param A Product object
 	 * @return 
 	 */
-	public int updateProduct(Product product, String oldName) {
-		return dBPro.updateProduct(product, oldName);
+	public int updateProduct(Product product, String name) {
+		return dBPro.updateProduct(product, name);
 	}
 	/**
 	 * Prompts the ProductDB to delete a tubble in Customer matching the param phoneno
@@ -47,6 +50,11 @@ public class ProductCtr {
 	 */
 	public int insertProduct(Product product) {
 		return dBPro.insertProduct(product);
+	}
+	
+	public Supplier findSupplier(String supplier){
+		System.out.println("ProCtr");
+		return dBSup.findSupplier(supplier);
 	}
 	
 }

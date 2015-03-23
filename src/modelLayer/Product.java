@@ -50,6 +50,20 @@ public class Product {
 		this.supplier = supplier;
 	}
 	
+	public Product(int stock, int minStock, String name, String originCountry,
+			double purchasePrice, double rentPrice, double salesPrice,
+			Supplier supplier)
+	{
+		this.stock = stock;
+		this.minStock = minStock;
+		this.name = name;
+		this.countryOfOrigin = originCountry;
+		this.purchasePrice = purchasePrice;
+		this.rentPrice = rentPrice;
+		this.salesPrice = salesPrice;
+		this.supplier = supplier;
+	}
+	
 	public int getId() 
 	{
 		return id;

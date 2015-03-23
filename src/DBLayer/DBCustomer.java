@@ -79,9 +79,9 @@ public class DBCustomer {
 		String query = "UPDATE customer SET " + "fname ='" + cusObj.getFname()
 				+ "', " + "lname ='" + cusObj.getLname() + "', " + "address ='"
 				+ cusObj.getAddress() + "', " + "zipcode ='"
-				+ cusObj.getZipcode() + "' " + "phoneno ='"
-				+ cusObj.getPhoneNo() + "' " + "email ='" + cusObj.getEmail()
-				+ "' " + "type ='" + cusObj.getType() + "' "
+				+ cusObj.getZipcode() + "', " + "phoneno ='"
+				+ cusObj.getPhoneNo() + "', " + "email ='" + cusObj.getEmail()
+				+ "', " + "type ='" + cusObj.getType() + "' "
 				+ " WHERE phoneNo = '" + cusObj.getPhoneNo() + "'";
 		System.out.println("Update query:" + query);
 		try {
