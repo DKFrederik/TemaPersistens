@@ -1,4 +1,4 @@
-package ctrLayer;
+package CtrLayer;
 import modelLayer.*;
 import DBLayer.*;
 

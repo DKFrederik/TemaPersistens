@@ -1,8 +1,6 @@
-package ctrLayer;
-import modelLayer.Customer;
+package CtrLayer;
 import modelLayer.Product;
-import DBLayer.DBCustomer;
-import DBLayer.ProductDB;
+import DBLayer.DBProduct;
 
 /**
  * @Author 	Frederik, Nichlas, Claus og Peter
@@ -12,10 +10,10 @@ import DBLayer.ProductDB;
 
 public class ProductCtr {
 
-	private ProductDB proDB;
+	private DBProduct dBPro;
 	
 	public ProductCtr() {
-		this.proDB = new ProductDB();
+		this.dBPro = new DBProduct();
 	}
 	
 	/**
@@ -24,31 +22,31 @@ public class ProductCtr {
 	 * @return a Product object with matching name String
 	 */
 	public Product getProduct(String name) {
-		return proDB.findProduct(name);
+		return dBPro.findProduct(name, false);
 	}
 	/**
 	 * Prompts the ProductDB to update the database
 	 * @param A Product object
-	 * @return an int indicating whether the update was succesfull (1) or unsuccesful (0) 
+	 * @return 
 	 */
 	public int updateProduct(Product product) {
-		return proDB.updateProduct(product);
+		return dBPro.updateProduct(product);
 	}
 	/**
 	 * Prompts the ProductDB to delete a tubble in Customer matching the param phoneno
 	 * @param the name attribute of the Product
-	 * @return an int indicating whether the delete was succesfull (1) or unsuccesful (0)
+	 * @return 
 	 */
 	public int deleteProduct(String name) {
-		return proDB.deleteProduct(name);
+		return dBPro.deleteProduct(name);
 	}
 	/**
 	 * Prompts the ProductDB to insert a Product objet to the database
 	 * @param A Product object
-	 * @return an int indicating whether the insert was succesfull (1) or unsuccesful (0) 
+	 * @return
 	 */
 	public int insertProduct(Product product) {
-		return proDB.insertProduct(product);
+		return dBPro.insertProduct(product);
 	}
 	
 }
