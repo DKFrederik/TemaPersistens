@@ -47,8 +47,9 @@ public class ProductCtr {
 	 * Prompts the ProductDB to insert a Product objet to the database
 	 * @param A Product object
 	 * @return
+	 * @throws Exception 
 	 */
-	public int insertProduct(Product product) {
+	public int insertProduct(Product product) throws Exception {
 		return dBPro.insertProduct(product);
 	}
 	
