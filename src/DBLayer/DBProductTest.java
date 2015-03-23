@@ -1,7 +1,6 @@
 package DBLayer;
 
 import static org.junit.Assert.*;
-import modelLayer.Customer;
 
 import org.junit.After;
 import org.junit.Before;
@@ -26,14 +25,14 @@ public class DBProductTest {
 		Product product = proDB.findProduct("Colt", false);
 		if(product !=null){
 			System.out.println(product.getId());
-			if(product instanceof GunReplica)
-				System.out.println("AHSDJAHDJASDHAJH");
-			//assertEquals("Claus",customer.getFname());
-		}
-		
+			if(product instanceof GunReplica) {
+				;
+			}
 		else {
 			fail("Customer not found!");
 		}
+			
+		}
 	}
-
 }
+

@@ -3,7 +3,6 @@ package DBLayer;
 import modelLayer.*;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  * @Author 	Frederik, Nichlas, Claus og Peter
@@ -20,7 +19,12 @@ public class DBPartOrder {
 		con = DBConnection.getInstance().getDBcon();
 	}
 	
-	// Insert
+	/**
+	 * 
+	 * @param partOrder The PartOrder that is to be inserted
+	 * @param id the id of the Order it belongs to. 
+	 * @return
+	 */
 	public int insertPartOrder(PartOrder partOrder, int id) {
 
 		int rc = -1;

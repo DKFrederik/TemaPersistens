@@ -20,28 +20,21 @@ public class DBCustomer {
 		con = DBConnection.getInstance().getDBcon();
 	}
 
-	// get one customer with attribute which matche the phoneno parameter 
+	/**
+	 * 
+	 * @param phoneno the Customer objects phone no.
+	 * @return the Customer matching the phone no.
+	 */
 	public Customer findCustomer(String phoneno) {
 		String wClause = "  phoneno = '" + phoneno + "'";
 		return searchWhere(wClause);
 	}
-
-	// find one customer having the fname
-	public Customer searchCustomerFname(String attValue) {
-		String wClause = "fname like '%" + attValue + "%'";
-		System.out.println("SearchCustomer " + wClause);
-		return searchWhere(wClause);
-	}
-
-	// find one customer having the lname
-	public Customer searchCustomerLname(String attValue) {
-		String wClause = "lname = '" + attValue + "'";
-		System.out.println("SearchCustomer " + wClause);
-		return searchWhere(wClause);
-	}
-
 	
-	// Insert
+	/**
+	 * 
+	 * @param cus a Customer object to be inserted.
+	 * @return 
+	 */
 	public int insertCustomer(Customer cus) {
 
 		int rc = -1;
@@ -74,7 +67,11 @@ public class DBCustomer {
 		return (rc);
 	}
 
-	//Update
+	/**
+	 * 
+	 * @param cus The customer object that is to be updated in the database.
+	 * @return
+	 */
 	public int updateCustomer(Customer cus) {
 		Customer cusObj = cus;
 		int rc = -1;
@@ -101,7 +98,11 @@ public class DBCustomer {
 	}
 
 	
-	//Deletes a customer tuble from the database which matches the phoneno 
+	/**
+	 * 
+	 * @param phoneNo The phone number of the customer that is to be removed.
+	 * @return
+	 */
 	public int deleteCustomer(String phoneNo) {
 		int rc = -1;
 
@@ -119,7 +120,11 @@ public class DBCustomer {
 		return (rc);
 	}
 
-	//searches the database for a customer using the parameter in the quiry-String 
+	/**
+	 * 
+	 * @param wClause where clause for sql query
+	 * @return a Customer object
+	 */
 	private Customer searchWhere(String wClause) {
 		ResultSet results;
 		Customer cusObj = new Customer();
@@ -147,7 +152,11 @@ public class DBCustomer {
 		return cusObj;
 	}
 
-	// builds a query string to be executet. 
+	/**
+	 * 
+	 * @param wClause where clause for SQL query.
+	 * @return A String formatted as a query.
+	 */
 	private String buildQuery(String wClause) {
 		String query = "SELECT fname, lname, address, zipcode, phoneno, email, type FROM customer";
 
@@ -157,7 +166,11 @@ public class DBCustomer {
 		return query;
 	}
 
-	// builds a customer object from the resultset and returns it.
+	/**
+	 * 
+	 * @param results ResultSet used for building the customer
+	 * @return The build customer object
+	 */
 	private Customer buildCustomer(ResultSet results) {
 		Customer cusObj = new Customer();
 		try 

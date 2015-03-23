@@ -3,7 +3,6 @@ package DBLayer;
 import modelLayer.*;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  * @Author 	Frederik, Nichlas, Claus og Peter
@@ -19,7 +18,11 @@ public class DBSalesOrder {
 		con = DBConnection.getInstance().getDBcon();
 	}
 	
-	// Insert
+	/**
+	 * 
+	 * @param sale the sales object that is to be inserted. 
+	 * @return
+	 */
 	public int insertSalesOrder(SalesOrder sale) {
 
 		int rc = -1;
@@ -48,6 +51,10 @@ public class DBSalesOrder {
 		return (rc);
 	}
 	
+	/**
+	 * Finds the max id of the salesOrder table.
+	 * @return the max id used in the salesOrder table. 
+	 */
 	public int findMaxId() {
 		int id = 0;
 		ResultSet rs;
