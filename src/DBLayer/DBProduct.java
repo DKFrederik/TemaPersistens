@@ -209,7 +209,6 @@ public class DBProduct {
 				
 				// get supplier should be implemented around here.
 				
-				
 			} else {
 				proObj = null;
 			}
@@ -276,11 +275,12 @@ public class DBProduct {
 	 * @return a GunReplica object. 
 	 */
 	private GunReplica makeGunReplica(ResultSet results) {
+		DBSupplier dbSup = new DBSupplier();
 		
 		GunReplica gun = new GunReplica();
 		try {
 			gun.setName(results.getString("name"));
-			//gun.setSupplier(results.getString("supplier"));
+			gun.setSupplier(dbSup.findSupplier(results.getString("supplier")));
 			gun.setPurchasePrice(Double.parseDouble(results.getString("purchasePrice")));
 			gun.setSalesPrice(Double.parseDouble(results.getString("salesPrice")));
 			gun.setRentPrice(Double.parseDouble(results.getString("rentPrice")));
@@ -302,12 +302,12 @@ public class DBProduct {
 	 * @return a Equipment object. 
 	 */
 	private Equipment makeEquipment(ResultSet results) {
-		
+		DBSupplier dbSup = new DBSupplier();
 		Equipment eq = new Equipment();
 		
 		try {
 			eq.setName(results.getString("name"));
-			//gun.setSupplier(results.getString("supplier"));
+			eq.setSupplier(dbSup.findSupplier(results.getString("supplier")));
 			eq.setPurchasePrice(Double.parseDouble(results.getString("purchasePrice")));
 			eq.setSalesPrice(Double.parseDouble(results.getString("salesPrice")));
 			eq.setRentPrice(Double.parseDouble(results.getString("rentPrice")));
@@ -330,12 +330,12 @@ public class DBProduct {
 	 * @return a Clothing object. 
 	 */
 	private Clothing makeClothing(ResultSet results) {
-		
+		DBSupplier dbSup = new DBSupplier();
 		Clothing c = new Clothing(); 
 		
 		try {
 			c.setName(results.getString("name"));
-			//c.setSupplier(results.getString("supplier"));
+			c.setSupplier(dbSup.findSupplier(results.getString("supplier")));
 			c.setPurchasePrice(Double.parseDouble(results.getString("purchasePrice")));
 			c.setSalesPrice(Double.parseDouble(results.getString("salesPrice")));
 			c.setRentPrice(Double.parseDouble(results.getString("rentPrice")));

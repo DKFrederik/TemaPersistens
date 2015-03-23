@@ -7,6 +7,7 @@ public class Supplier {
 	private String country;
 	private String phoneno;
 	private String email;
+	
 	public Supplier(String name, String address, String country,
 			String phoneno, String email) {
 		super();
@@ -16,6 +17,11 @@ public class Supplier {
 		this.phoneno = phoneno;
 		this.email = email;
 	}
+	
+	public Supplier() {
+
+	}
+	
 	/**
 	 * @return the name
 	 */
