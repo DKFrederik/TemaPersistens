@@ -8,25 +8,35 @@ import java.util.ArrayList;
 /**
  * DBProduct.java
  * 
- * @author kbh
- * @version 5. oktober 2006, 2011.02.16
+ * @author Peter, Frederik, Claus og Nichlas.
+ * @version 20.03.2015
  *
  */
 public class DBProduct {
 	private Connection con;
 
-	/** Creates a new instance of DBProduct */
+	/**
+	 * Constructor for DBProduct() class. 
+	 */
 	public DBProduct() {
 		con = DBConnection.getInstance().getDBcon();
 	}
-
-	// Implements the methods from the interface
-	// get all products
+	
+	/**
+	 * 
+	 * @param retriveAssociation Determines if associations should be retrieved or not. 
+	 * @return An ArrayList of Product objects.
+	 */
 	public ArrayList<Product> getAllProducts(boolean retriveAssociation) {
 		return miscWhere("", retriveAssociation);
 	}
 
-	// get one product having the phoneno
+	/**
+	 * 
+	 * @param name The name of the product that you wish to find.
+	 * @param retriveAssociation Determines if associations should be retrieved or not. 
+	 * @return A Product Object if found, null if not.
+	 */
 	public Product findProduct(String name, boolean retriveAssociation) {
 		String wClause = "  name = '" + name + "'";
 		return singleWhere(wClause, retriveAssociation);
@@ -86,10 +96,11 @@ public class DBProduct {
 		return (rc);
 	}
 
-	public void updateProduct(Product cus) {
+	public int updateProduct(Product pro) {
+		return -1;
 	}
 
-	public int delete(String proName) {
+	public int deleteProduct(String proName) {
 		int rc = -1;
 
 		String query = "DELETE FROM Product WHERE name = '" + proName + "'";
@@ -153,7 +164,6 @@ public class DBProduct {
 
 			if (results.next()) {
 				proObj = buildProduct(results);
-				// assocaition is to be build
 				stmt.close();
 				
 				// get supplier should be implemented around here.
@@ -195,7 +205,6 @@ public class DBProduct {
 	try{
 		if(results.getString("size") == null)
 		{
-			System.out.println("size = null");
 			if(results.getString("type") == null)
 			{
 				return makeGunReplica(results);
@@ -206,17 +215,17 @@ public class DBProduct {
 			}
         }
 
-		else
+		else 
 		{
 			return makeClothing(results);
 		}
-          
+       
         }
         catch(Exception e)
         {
              System.out.println("error in building the product object.");
         }
-		return null; //Should not happen
+		return null;
         
 	}
 	
@@ -301,4 +310,5 @@ public class DBProduct {
 		
 		return c;
 	}
+	
 }
