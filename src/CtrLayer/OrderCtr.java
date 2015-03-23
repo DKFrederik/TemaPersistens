@@ -27,19 +27,9 @@ public class OrderCtr {
 
 	public void addPartOrder(int nrOfItems, Product pro)
 	{
-		int j = sale.getPartOrders().size();
-		
-		for(int i = 0; i < j; i++) 
-		{
-			if(sale.getPartOrders().get(i).getProducts().getName().equals(pro.getName())) 
-			{
-				sale.getPartOrders().get(i).setNrOfItems(sale.getPartOrders().get(i).getNrOfItems() + nrOfItems);
-			}
-			else {
-				PartOrder pOrder = new PartOrder(pro,nrOfItems);
-				sale.addPartOrder(pOrder);				
-			}
-		}
+		PartOrder pOrder = new PartOrder(pro,nrOfItems);
+		sale.addPartOrder(pOrder);				
+
 	}
 	
 	public void addCustomer(String phoneno)
@@ -49,6 +39,7 @@ public class OrderCtr {
 	
 	public void completeOrder()
 	{
+		makeInvoice();
 		int size = sale.getPartOrders().size();
 		dBsale.insertSalesOrder(sale);
 		
@@ -74,5 +65,16 @@ public class OrderCtr {
 		}
 		
 		return totalPrice;
+	}
+	
+	public boolean makeInvoice() 
+	{
+		Invoice invoice = new Invoice(sale, getPrice());
+		sale.setInvoice(invoice);
+		
+		return true;
+	}
+	public SalesOrder getOrder(){
+		return sale;
 	}
 }

@@ -12,22 +12,25 @@ public class SalesOrder {
 
 	private int id;
 	private Date date;
-	private char deliveryDate;
-	private Date deliveryStatus;
+	private Date deliveryDate;
+	private char deliveryStatus;
 	private ArrayList<PartOrder> partOrders;
     private Customer customer;
     private Invoice invoice;
 	
-	public SalesOrder(Date date, char deliveryDate, Date deliveryStatus, Customer customer, Invoice invoice) {
+	public SalesOrder(Date date, Date deliveryDate, char deliveryStatus, Customer customer, Invoice invoice) {
 		this.date = date;
 		this.deliveryDate = deliveryDate;
 		this.deliveryStatus = deliveryStatus;
 		this.customer = customer;
 		this.invoice = invoice;
-		partOrders = new ArrayList<>();
+		partOrders = new ArrayList<PartOrder>();
 	}
 	
 	public SalesOrder() {
+		date = new Date();
+		deliveryDate = new Date();
+		partOrders = new ArrayList<PartOrder>();
 	}
 
 	public double getPrice()
@@ -77,28 +80,28 @@ public class SalesOrder {
 	/**
 	 * @return the deliveryDate
 	 */
-	public char getDeliveryDate() {
+	public Date getDeliveryDate() {
 		return deliveryDate;
 	}
 
 	/**
 	 * @param deliveryDate the deliveryDate to set
 	 */
-	public void setDeliveryDate(char deliveryDate) {
+	public void setDeliveryDate(Date deliveryDate) {
 		this.deliveryDate = deliveryDate;
 	}
 
 	/**
 	 * @return the deliveryStatus
 	 */
-	public Date getDeliveryStatus() {
+	public char getDeliveryStatus() {
 		return deliveryStatus;
 	}
 
 	/**
 	 * @param deliveryStatus the deliveryStatus to set
 	 */
-	public void setDeliveryStatus(Date deliveryStatus) {
+	public void setDeliveryStatus(char deliveryStatus) {
 		this.deliveryStatus = deliveryStatus;
 	}
 

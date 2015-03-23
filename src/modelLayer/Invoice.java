@@ -6,18 +6,22 @@ public class Invoice {
 
 	private int invoiceNo;
 	private Date paymentDate;
-	private int amount;
+	private double amount;
 	private ArrayList<SalesOrder> salesOrders;
 	
-	public Invoice(int invoiceNo, Date paymentDate, int amount) {
+	public Invoice(int invoiceNo, Date paymentDate, double amount) {
 		this.invoiceNo = invoiceNo;
 		this.paymentDate = paymentDate;
 		this.amount = amount;
 		salesOrders = new ArrayList<SalesOrder>();
 	}
 
-	public Invoice() {
+	public Invoice(SalesOrder sale, double amount) {
+		java.sql.Date d1 = new java.sql.Date(1234);
+		System.out.println(d1.getTime());
 		salesOrders = new ArrayList<SalesOrder>();
+		salesOrders.add(sale);
+		this.amount = amount;
 	}
 	/**
 	 * @return the invoiceNo
@@ -50,7 +54,7 @@ public class Invoice {
 	/**
 	 * @return the amount
 	 */
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 

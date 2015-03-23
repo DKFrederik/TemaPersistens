@@ -16,15 +16,15 @@ import java.sql.*;
 public class DBConnection
 {   //Constants used to get access to the database
 	//SQL Server
-   //private static final String  driver = "jdbc:sqlserver://kraka.ucn.dk:1433";
-   private static final String  driver = "jdbc:sqlserver://localhost:1433";
-   private static final String  databaseName = ";databaseName=WesternStyle";
+   private static final String  driver = "jdbc:sqlserver://kraka.ucn.dk:1433";
+   //private static final String  driver = "jdbc:sqlserver://localhost:1433";
+   private static final String  databaseName = ";databaseName=dmab0914_2Sem_4";
    // SQL Server
    //
-   //private static String  userName = ";user=dmab0914_2Sem_4";
-   private static String  userName = ";user=sa";
-    private static String password = ";password=masterkey";
-    //private static String password = ";password=IsAllowed";
+   private static String  userName = ";user=dmab0914_2Sem_4";
+   //private static String  userName = ";user=sa";
+   //private static String password = ";password=masterkey";
+   private static String password = ";password=IsAllowed";
     
     private DatabaseMetaData dma;
     private static Connection con;

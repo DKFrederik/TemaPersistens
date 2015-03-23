@@ -14,8 +14,11 @@ import javax.swing.JLabel;
 import modelLayer.Product;
 import modelLayer.Supplier;
 
+import java.awt.Dimension;
 import java.awt.Font;
+
 import javax.swing.JRadioButton;
+
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
@@ -57,6 +60,8 @@ public class ProductGui extends JFrame{
 		
 		setTitle("Product");
 		setVisible(true);
+		setPreferredSize(new Dimension(500, 500));
+		pack();
 		
 		proCtr = new ProductCtr();
 		getContentPane().setLayout(null);
@@ -66,7 +71,7 @@ public class ProductGui extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				Product p = proCtr.getProduct(textPname.getText());
 				if(p != null){
-					textSupplier.setText(p.getSupplier().getName());
+					//textSupplier.setText(p.getSupplier().getName());
 					textPname.setText(p.getName());
 					textPPrice.setText(Double.toString(p.getPurchasePrice()));
 					textSPrice.setText(Double.toString(p.getSalesPrice()));
@@ -84,7 +89,7 @@ public class ProductGui extends JFrame{
 		btnCreate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Supplier supplier = proCtr.findSupplier((textSupplier.getText()));
+					//Supplier supplier = proCtr.findSupplier((textSupplier.getText()));
 					String pname = textPname.getText();
 					double purchasePrice = Double.parseDouble(textPPrice.getText());
 					double salesPrice = Double.parseDouble(textSPrice.getText());
@@ -92,7 +97,7 @@ public class ProductGui extends JFrame{
 					String country = textCountry.getText();
 					int minStock = Integer.parseInt(textMinstock.getText());
 					int curStock = Integer.parseInt(textCurStock.getText());
-					Product p = new Product(curStock, minStock, pname, country, purchasePrice, salesPrice, rentPrice, supplier);
+					Product p = new Product(curStock, minStock, pname, country, purchasePrice, salesPrice, rentPrice);
 					if(proCtr.insertProduct(p) > 0){
 						System.out.println("Product created ");
 					}
@@ -111,7 +116,7 @@ public class ProductGui extends JFrame{
 		JButton button_2 = new JButton("Update");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Supplier supplier = proCtr.findSupplier(textSupplier.getText());
+				//Supplier supplier = proCtr.findSupplier(textSupplier.getText());
 				String pname = textPname.getText();
 				double purchasePrice = Double.parseDouble(textPPrice.getText());
 				double salesPrice = Double.parseDouble(textSPrice.getText());
@@ -119,7 +124,7 @@ public class ProductGui extends JFrame{
 				String country = textCountry.getText();
 				int minStock = Integer.parseInt(textMinstock.getText());
 				int curStock = Integer.parseInt(textCurStock.getText());
-				Product p = new Product(curStock, minStock, pname, country, purchasePrice, rentPrice, salesPrice, supplier);
+				Product p = new Product(curStock, minStock, pname, country, purchasePrice, rentPrice, salesPrice);
 				if(proCtr.updateProduct(p, pname) > 0){
 					System.out.println("Product updated ");
 				}

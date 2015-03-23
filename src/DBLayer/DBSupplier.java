@@ -58,7 +58,7 @@ public class DBSupplier {
 	private Supplier buildSupplier(ResultSet results) {
 	
 		Supplier sup = new Supplier();
-		
+
 		try {
 			sup.setName(results.getString("name"));
 			sup.setAddress(results.getString("address"));
