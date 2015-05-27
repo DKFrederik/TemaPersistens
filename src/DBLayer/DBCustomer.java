@@ -3,6 +3,7 @@ package DBLayer;
 import modelLayer.*;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * 
@@ -157,7 +158,7 @@ public class DBCustomer {
 	 * @return A String formatted as a query.
 	 */
 	private String buildQuery(String wClause) {
-		String query = "SELECT id, fname, lname, address, zipcode, phoneno, email, type FROM customer";
+		String query = "SELECT fname, lname, address, zipcode, phoneno, email, type FROM customer";
 
 		if (wClause.length() > 0)
 			query += " WHERE " + wClause;
@@ -174,7 +175,6 @@ public class DBCustomer {
 		Customer cusObj = new Customer();
 		try 
 		{
-			cusObj.setId(Integer.parseInt(results.getString("id")));
 			cusObj.setFname(results.getString("fname"));
 			cusObj.setLname(results.getString("lname"));
 			cusObj.setAddress(results.getString("address"));

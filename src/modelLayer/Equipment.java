@@ -29,7 +29,7 @@ public class Equipment extends Product {
 			Supplier supplier, String type, String desc) 
 	{
 		super(id, stock, minStock, name, originCountry, purchasePrice, rentPrice,
-				salesPrice);
+				salesPrice, supplier);
 		this.type = type;
 		this.desc = desc;
 	}

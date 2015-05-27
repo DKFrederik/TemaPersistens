@@ -35,8 +35,6 @@ public class CustomerGui extends JFrame {
 	public CustomerGui() {
 		setTitle("Customer");
 		setVisible(true);
-		setPreferredSize(new Dimension(500, 500));
-		pack();
 		
 		cusCtr = new CustomerCtr();
 		getContentPane().setLayout(null);

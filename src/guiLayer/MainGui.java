@@ -5,7 +5,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -20,7 +19,6 @@ public class MainGui extends JFrame{
 	public MainGui() {
 		setTitle("Main");
 		setVisible(true);
-		setPreferredSize(new Dimension(450, 300));
 		pack();
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -30,7 +28,7 @@ public class MainGui extends JFrame{
 				CustomerGui cgui = new CustomerGui();
 			}
 		});
-		btnCustomer.setBounds(138, 37, 148, 36);
+		btnCustomer.setBounds(117, 13, 148, 36);
 		panel.add(btnCustomer);
 		
 		
@@ -40,16 +38,15 @@ public class MainGui extends JFrame{
 				ProductGui pgui = new ProductGui();
 			}
 		});
-		btnProduct.setBounds(138, 97, 148, 36);
+		btnProduct.setBounds(117, 73, 148, 36);
 		panel.add(btnProduct);
 		
 		JButton btnOrder = new JButton("Order");
 		btnOrder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				OrderGui ogui = new OrderGui();
 			}
 		});
-		btnOrder.setBounds(138, 164, 148, 36);
+		btnOrder.setBounds(117, 140, 148, 36);
 		panel.add(btnOrder);
 		// TODO Auto-generated constructor stub
 	}

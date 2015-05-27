@@ -36,7 +36,8 @@ public class Product {
 	 */
 	
 	public Product(int id, int stock, int minStock, String name, String originCountry,
-			double purchasePrice, double rentPrice, double salesPrice) 
+			double purchasePrice, double rentPrice, double salesPrice,
+			Supplier supplier) 
 	{
 		this.id = id;
 		this.stock = stock;
@@ -46,10 +47,12 @@ public class Product {
 		this.purchasePrice = purchasePrice;
 		this.rentPrice = rentPrice;
 		this.salesPrice = salesPrice;
+		this.supplier = supplier;
 	}
 	
 	public Product(int stock, int minStock, String name, String originCountry,
-			double purchasePrice, double rentPrice, double salesPrice)
+			double purchasePrice, double rentPrice, double salesPrice,
+			Supplier supplier)
 	{
 		this.stock = stock;
 		this.minStock = minStock;
@@ -58,6 +61,7 @@ public class Product {
 		this.purchasePrice = purchasePrice;
 		this.rentPrice = rentPrice;
 		this.salesPrice = salesPrice;
+		this.supplier = supplier;
 	}
 	
 	public int getId() 

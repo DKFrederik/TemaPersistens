@@ -28,7 +28,7 @@ public class Clothing extends Product {
 			Supplier supplier, String size, String colour) 
 	{
 		super(id, stock, minStock, name, originCountry, purchasePrice, rentPrice,
-				salesPrice);
+				salesPrice, supplier);
 		this.size = size;
 		this.colour = colour;
 	}

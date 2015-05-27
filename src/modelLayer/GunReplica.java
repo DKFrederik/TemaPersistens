@@ -23,7 +23,7 @@ public class GunReplica extends Product {
 			Supplier supplier, String fabric, String calibre) 
 	{
 		super(id, stock, minStock, name, originCountry, purchasePrice, rentPrice,
-				salesPrice);
+				salesPrice, supplier);
 		this.fabric = fabric;
 		this.calibre = calibre;
 	}

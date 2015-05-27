@@ -52,8 +52,8 @@ public class DBProduct {
 
 		int rc = -1;
 		String query = "INSERT INTO Product(supplier, name, puchasePrice, salesPrice, rentPrice, countryOfOrigin, minStock, stock, size, colour, type, description, fabric, calibre)  VALUES('"
-				//+ pro.getSupplier()
-				//+ "','"
+				+ pro.getSupplier()
+				+ "','"
 				+ pro.getName()
 				+ "','"
 				+ pro.getPurchasePrice()
@@ -105,8 +105,7 @@ public class DBProduct {
 		Product proObj = pro;
 		int rc = -1;
 
-		String query = "UPDATE Product SET " 
-				//+ "supplier ='" + proObj.getSupplier().getName() + "', " 
+		String query = "UPDATE Product SET " + "supplier ='" + proObj.getSupplier().getName() + "', " 
 				+ "name ='" + proObj.getName() + "', " 
 				+ "purchasePrice ='" + proObj.getPurchasePrice() + "', " 
 				+ "salesPrice ='" + proObj.getSalesPrice() + "', " 
@@ -276,12 +275,12 @@ public class DBProduct {
 	 * @return a GunReplica object. 
 	 */
 	private GunReplica makeGunReplica(ResultSet results) {
-		//DBSupplier dbSup = new DBSupplier();
+		DBSupplier dbSup = new DBSupplier();
 		
 		GunReplica gun = new GunReplica();
 		try {
 			gun.setName(results.getString("name"));
-			//gun.setSupplier(dbSup.findSupplier(results.getString("supplier")));
+			gun.setSupplier(dbSup.findSupplier(results.getString("supplier")));
 			gun.setPurchasePrice(Double.parseDouble(results.getString("purchasePrice")));
 			gun.setSalesPrice(Double.parseDouble(results.getString("salesPrice")));
 			gun.setRentPrice(Double.parseDouble(results.getString("rentPrice")));
@@ -303,12 +302,12 @@ public class DBProduct {
 	 * @return a Equipment object. 
 	 */
 	private Equipment makeEquipment(ResultSet results) {
-		//DBSupplier dbSup = new DBSupplier();
+		DBSupplier dbSup = new DBSupplier();
 		Equipment eq = new Equipment();
 		
 		try {
 			eq.setName(results.getString("name"));
-			//eq.setSupplier(dbSup.findSupplier(results.getString("supplier")));
+			eq.setSupplier(dbSup.findSupplier(results.getString("supplier")));
 			eq.setPurchasePrice(Double.parseDouble(results.getString("purchasePrice")));
 			eq.setSalesPrice(Double.parseDouble(results.getString("salesPrice")));
 			eq.setRentPrice(Double.parseDouble(results.getString("rentPrice")));
@@ -331,12 +330,12 @@ public class DBProduct {
 	 * @return a Clothing object. 
 	 */
 	private Clothing makeClothing(ResultSet results) {
-		//DBSupplier dbSup = new DBSupplier();
+		DBSupplier dbSup = new DBSupplier();
 		Clothing c = new Clothing(); 
 		
 		try {
 			c.setName(results.getString("name"));
-			//c.setSupplier(dbSup.findSupplier(results.getString("supplier")));
+			c.setSupplier(dbSup.findSupplier(results.getString("supplier")));
 			c.setPurchasePrice(Double.parseDouble(results.getString("purchasePrice")));
 			c.setSalesPrice(Double.parseDouble(results.getString("salesPrice")));
 			c.setRentPrice(Double.parseDouble(results.getString("rentPrice")));
